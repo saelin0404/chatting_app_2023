@@ -15,6 +15,10 @@ main.pro{
     height: 65%; 
     background: url(../images/bg_default.png) no-repeat 0 0;
     background-size: cover;
+    &>form{
+      position: relative; 
+      top: 200px;
+    }
   }
   .profile{
     display: flex; 

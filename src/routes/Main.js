@@ -10,7 +10,7 @@ import users from '../data/users.json';
 
 
 
-function Main(){
+function Main({userObj}){
   return (
     <>
     <header className='main'>
@@ -33,9 +33,9 @@ function Main(){
         <header className='main_header'><h2>My Profile</h2></header>
         <ul>
           <li>
-            <Link to={"/Myprofile"}>
-              <span className='profile_img empty'></span>
-              <span className='profile_name'>My Name</span>
+            <Link to={"/Myprofile"} userObj={userObj}>
+              <span className='profile_img empty' style={{backgroundImage: `url(${userObj.photoURL}`}}></span>
+              <span className='profile_name'>{userObj.displayName}</span>
             </Link>
           </li>
         </ul>

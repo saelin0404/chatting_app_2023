@@ -5,8 +5,8 @@ import { authService } from "fbase";
 import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
-  const [isLogIn,setIsLogIn] = useState(authService.currentUser);
-  const [userObj,setUserObj] = useState();
+  const [isLogIn,setIsLogIn] = useState(false);
+  const [userObj,setUserObj] = useState(null);
 
   useEffect(()=>{
     onAuthStateChanged(authService, (user) => { 
@@ -23,7 +23,6 @@ function App() {
   return (
   <>
   <Router isLogIn={isLogIn} userObj = {userObj}/>
-
   </>
   );
 }

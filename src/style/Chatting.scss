@@ -24,7 +24,7 @@
 main.chatting{
   display: flex; 
   flex-direction: column;
-  height:fit-content; 
+  height: fit-content;
   padding-top: 64px;
   background: #a1c0d5;
   padding-bottom: 45px;
@@ -34,6 +34,7 @@ main.chatting{
     margin: 10px;
   }
   .chat_box{
+    top: 0;
     display: inline-flex; 
     flex-direction: column; 
     align-items: flex-start;

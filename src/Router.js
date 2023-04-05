@@ -16,18 +16,18 @@ function Router({isLogIn,userObj}){
     <BrowserRouter>
     <Routes>
       {isLogIn ? (
-      <Route path='/' element={<Main/>}/>
+        <>
+        <Route path='/' element={<Main userObj = {userObj}/>}/>
+        <Route path='/chat' element={<Chat />}/>
+        <Route path='/find' element={<Find />}/>
+        <Route path='/more' element={<More />}/>
+        <Route path='/chatting' element={<Chatting userObj = {userObj}/>}/>
+        <Route path='/Myprofile' element={<Myprofile userObj = {userObj}/>}/>
+        <Route path='/profile' element={<Profile />}/>
+        </>
       ):(
       <Route path='/' element={<Auth/>}/>
       )}
-    </Routes>
-    <Routes>
-      <Route path='/chat' element={<Chat />}/>
-      <Route path='/find' element={<Find />}/>
-      <Route path='/more' element={<More />}/>
-      <Route path='/chatting' element={<Chatting userObj = {userObj}/>}/>
-      <Route path='/myprofile' element={<Myprofile />}/>
-      <Route path='/profile' element={<Profile />}/>
     </Routes>
     </BrowserRouter>
   )

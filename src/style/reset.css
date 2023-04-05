@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/* 초기화파일 */
+html,body{width: 100%; height: 100%;}
+html,body,div,span,Object,iframe,h1,h2,h3,h4,h5,h6,p,
+blockquote,pre,abbr,address, cite, code, del.dfn,em,img,
+ins,kbd, a, samp, strong, sub, sup, var, dl,dd, dt,ol,ul,li,
+fieldset, form, label,input,legend, table, caption, tbody,tfoot, head, tr,th,td,summary,
+small,b,i,article, aside, canvas, details,figcaption,footer, header, menu, nav, section,time
+mark, audio,video{margin: 0; padding: 0;}
+
+article, aside, details, Figcaption, figure, footer, header ,menu,nav, section, video{display: block;}
+table {border-collapse:collapse;}
+/* 셍과 셀사이에 간격 */
+Fieldset,img{border: 0;}
+/* 자동으로 보더가 생김 */
+address,caption,cite,code.en,strong,th{font-style:normal;font-weight:normal}
+/* 굵은글씨 기울은글씨 기본으로 */
+ol,ul{list-style: none;}
+caption,th{text-align: left;}
+h1,h2,h3,h4,h5,h6{font-size: 100%; font-weight: normal;}
+q:before,q:after{content: "";}
+/* 인용구 "를 없애줌 */
+abbr,acronym {border:0}
+/* 두문자에 축약어 밑줄 없애줌 */
+img{vertical-align: middle;} 
+hr{display: none;}
+#skipnavi,.blind{position: absolute; left: 0; top: 0; width: 0; height: 0; font-size: 0;
+  line-height: 0; text-indent: -9999px; overflow: hidden; visibility: hidden;}
+  /* 완전한 스킵소스 글씨와 공간모두 없어짐 */

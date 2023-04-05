@@ -76,6 +76,7 @@ function Auth() {
         <button name='github' onClick={onsocialClick}>Continue with GitHub</button>
       </div>
     </div>
+    <div></div>
     </main>
     </>
   )

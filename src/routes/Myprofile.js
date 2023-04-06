@@ -9,6 +9,7 @@ import { collection, addDoc , onSnapshot ,query, orderBy ,doc, getDoc} from "fir
 import { db , storage } from 'fbase';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadString ,getDownloadURL,getStorage, refFromURL } from "firebase/storage";
+import Back from 'component/Back';
 
 
 function Myprofile({userObj}) {
@@ -16,8 +17,9 @@ function Myprofile({userObj}) {
   const[newDisplayName,setNewDisplayName] = useState(userObj.displayName);
   const[attachment,setAttachment] = useState(userObj.photoURL); //빈문자열
   const[attach,setAttach] = useState(""); //빈문자열
-  const[aaatt,setAaatt] = useState(attach)
-
+  const[aaatt,setAaatt] = useState()
+  
+  
   const onTweetSubmit = async (e)=>{
     e.preventDefault();
     try {
@@ -30,24 +32,8 @@ function Myprofile({userObj}) {
       console.error(e)
     }
   }
-  const onBackSubmit = async (e)=>{
-    e.preventDefault();
-    try {
-      let attachmentUrl = "";
-        const storageRef = ref(storage, `${userObj.uid}/${uuidv4()}`);
-        const response = await uploadString(storageRef, attach, 'data_url'); 
-        attachmentUrl = await getDownloadURL(ref(storage, response.ref))
 
-    const docRef = await addDoc(collection(db, "tweets"), {
-      createdAt: Date.now(), 
-      creatorID: userObj.uid,
-      attachmentUrl
-    });
 
-    } catch (e) {
-      console.error(e)
-    }
-  }
   const onChange = (e)=>{
     const{target:{value}} = e;
     setNewDisplayName(value)
@@ -89,7 +75,7 @@ function Myprofile({userObj}) {
     reader.readAsDataURL(thefile)// 데이타url로 바꿔줌 //이 동작이 실행된후에 reader.onloadend을 읽어드리기 시작함
   }
   
-
+  
   return (
     <>
     <header className='main profile'>
@@ -101,13 +87,7 @@ function Myprofile({userObj}) {
     />
     </header>
     <main className='pro'>
-      <section className="background" style={{backgroundImage: `url(${aaatt}`}}>
-        <h2 className="blind">My profile background image</h2>
-        <form onSubmit={onBackSubmit}>
-      <input type='file' accept='image/*'onChange={onFile}/>
-      <input type='submit' value='Tweet'/>
-      </form>
-      </section>
+          <Back userObj={userObj}/>
       <section className="profile">
         <h2 className="blind">My profile info</h2>
         <div className="profile_img empty" style={{backgroundImage: `url(${attachment}`}}>

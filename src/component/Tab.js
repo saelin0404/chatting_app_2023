@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faComment, faMagnifyingGlass, faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import '../style/Tab.scss';
-import { Link, useLocation } from 'react-router-dom';
 
-function Tab() {
+function Tab(){
   const location = useLocation();
   const [selectedTab, setSelectedTab] = useState(null);
 
   const tabs = [
     { icon: faUser, to: '/' },
-    { icon: faComment, to: '/chat' },
-    { icon: faMagnifyingGlass, to: '/find' },
+    { icon: faComment, to: '/chats' },
+    { icon: faMagnifyingGlass, to: '/shopping' },
     { icon: faEllipsis, to: '/more' },
   ];
 
-  // 클릭 이벤트 핸들러
   const handleClick = (index) => {
     setSelectedTab(index);
   };
@@ -23,20 +21,18 @@ function Tab() {
   return (
     <nav className='tab_bar'>
       <ul>
-        {tabs.map((tab, index) => (
+        {tabs.map((tab,index) => (
           <li
             key={index}
-            onClick={() => handleClick(index)}
-            className={`${location.pathname === tab.to ? 'on' : ''} ${selectedTab === index ? 'on' : ''}`}
+            onClick={()=> handleClick(index)}
+            className={`${location.pathname === tab.to ? 'on' : ''} ${selectedTab === index ? 'on':''}`}
           >
-            <Link to={tab.to}>
-              <FontAwesomeIcon icon={tab.icon} />
-            </Link>
+            <Link to={tab.to}><FontAwesomeIcon icon={tab.icon}/></Link>
           </li>
         ))}
       </ul>
     </nav>
-  );
+  )
 }
 
-export default Tab;
+export default Tab

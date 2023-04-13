@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import {authService} from 'fbase';
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,GithubAuthProvider} from "firebase/auth";
-import Header from './Header';
-import '../style/Auth.scss'
-
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
 
 function Auth() {
   const[email,setEmail] = useState();
   const[password,setPassword] = useState();
-  const[newAccount,setNewAccount] = useState(true);
   const[error,setError] = useState('');
+  const[newAccount,setNewAccount] = useState(true);
 
+  //이메일,비밀번호입력
   const onChange = e =>{
     const {target:{name,value}} = e;
     console.log(e);
@@ -21,6 +19,7 @@ function Auth() {
     }
   }
 
+  //회원가입 및 로그인
   const onSubmit = async(e)=>{
     e.preventDefault();
     let data;
@@ -37,47 +36,28 @@ function Auth() {
     }
   }
 
+  //로그인/회원가입 전환
   const toggleAccount = ()=>{setNewAccount(prev => !prev)}
 
-  const onsocialClick = async (e) =>{
-    console.log('e.target.name->',e.target.name);
-    const {target:{name}} = e;
-    let provider;
-    if(name === 'google'){
-      provider = new GoogleAuthProvider();
-
-    }else if(name === 'github'){
-      provider =new GithubAuthProvider();
-    }
-    const data = signInWithPopup(authService, provider)
-    console.log(data);
-  }
 
   return (
-    <>
-    <header className='auth_header'>
-    <Header/>
-    </header>
-
     <main className='auth_main'>
-    <div className='login'>
-      <form onSubmit={onSubmit}>
-        <input type='email' placeholder='email' required name='email' 
-          onChange={onChange} value={email}/>
-        <input type='password' placeholder='password' required name='password'
-          onChange={onChange} value={password}/>
-        <input type='submit' value={newAccount ? 'Create Account':'Log In'}/>
-      </form>
-      <span onClick={toggleAccount}>
-        {newAccount? "Sign In" : 'Create Account'}
-      </span>
       <div>
-        <button name='google' onClick={onsocialClick}>Continue with Google</button>
-        <button name='github' onClick={onsocialClick}>Continue with GitHub</button>
+        <form onSubmit={onSubmit}>
+          <input type='email' placeholder='EMail' required name='email' 
+            onChange={onChange} value={email}/>
+          <input type='password' placeholder='PASSWORD' required name='password'
+            onChange={onChange} value={password}/>
+          <input type='submit' value={newAccount ? '회원가입':'로그인'}/>
+        </form>
+        <span onClick={toggleAccount}>{newAccount? "로그인 하기" : '회원가입 하기'}</span>
+        <div>
+          <span>SNS로 로그인</span>
+          <button name='google'></button>
+          <button name='github'></button>
+        </div>
       </div>
-    </div>
     </main>
-    </>
   )
 }
 

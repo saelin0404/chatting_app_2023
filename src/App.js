@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
-import 'style/App.css';
-import Router from 'Router';
-import { authService } from "fbase";
+import React, { useEffect, useState } from 'react'
+import AppRouter from 'Router'
+import {authService} from 'fbase';
 import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [isLogIn,setIsLogIn] = useState(false);
-  const [userObj,setUserObj] = useState(null);
+  const [user,setUser] = useState(null);
 
+  //사용자 정보다운로드
   useEffect(()=>{
-    onAuthStateChanged(authService, (user) => { 
-      console.log("user->",user);
-      if (user) {
-        setIsLogIn(user);
-        setUserObj(user);
+    onAuthStateChanged(authService, (u) => { 
+      if (u) {
+        setIsLogIn(u);
+        setUser(u);
       } else {
         setIsLogIn(false);
       }
@@ -21,10 +20,10 @@ function App() {
   },[])
 
   return (
-  <>
-  <Router isLogIn={isLogIn} userObj = {userObj}/>
-  </>
-  );
+    <>
+    <AppRouter isLogIn = {isLogIn} user = {user}/>
+    </>
+  )
 }
 
-export default App;
+export default App

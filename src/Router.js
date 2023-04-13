@@ -1,36 +1,34 @@
+import Auth from 'component/Auth'
 import React from 'react'
 import { BrowserRouter, Route ,Routes } from 'react-router-dom'
-import Main from './routes/Main'
-import Auth from './component/Auth'
-import Chat from 'routes/Chat';
-import Find from 'routes/Find';
-import Chatting from 'routes/Chatting';
-import Myprofile from 'routes/Myprofile';
+import Main from 'routes/Main'
+import Friend from 'routes/Friend';
+import Shopping from 'routes/Shopping';
 import More from 'routes/More';
-import Profile from 'routes/Profile';
+import Chats from 'routes/Chats';
+import Chattings from 'routes/Chattings';
+import Myprofile from 'routes/Myprofile';
 
-
-function Router({isLogIn,userObj}){
-
+function AppRouter({isLogIn,user}){
   return (
     <BrowserRouter>
     <Routes>
       {isLogIn ? (
         <>
-        <Route path='/' element={<Main userObj = {userObj}/>}/>
-        <Route path='/chat' element={<Chat />}/>
-        <Route path='/find' element={<Find />}/>
-        <Route path='/more' element={<More />}/>
-        <Route path='/chatting' element={<Chatting userObj = {userObj}/>}/>
-        <Route path='/Myprofile' element={<Myprofile userObj = {userObj}/>}/>
-        <Route path='/profile' element={<Profile />}/>
+          <Route path='/' element={<Main user={user}/>}/>
+          <Route path='/myprofile' element={<Myprofile user={user}/>}/>
+          <Route path='/friend' element={<Friend/>}/>
+          <Route path='/chats' element={<Chats/>}/>
+          <Route path='/chattings' element={<Chattings user={user}/>}/>
+          <Route path='/shopping' element={<Shopping />}/>
+          <Route path='/more' element={<More />}/>
         </>
       ):(
-      <Route path='/' element={<Auth/>}/>
+        <Route path='/' element={<Auth />}/>
       )}
     </Routes>
     </BrowserRouter>
   )
 }
 
-export default Router
+export default AppRouter

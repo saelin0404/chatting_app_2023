@@ -7,7 +7,7 @@ import { authService } from "fbase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faViadeo } from "@fortawesome/free-brands-svg-icons";
 import { faCircleUser, faFaceSmile, faHand} from "@fortawesome/free-regular-svg-icons";
-import { faAngleLeft, faBuildingColumns, faCircleInfo, faGear, faGraduationCap, faHouseChimney, 
+import { faAngleLeft, faBuildingColumns, faCircleInfo, faGear, faGraduationCap, faHeart, faHouseChimney, 
          faPaintBrush, faPencil, faRightFromBracket, faTv, faUtensils, faWonSign,} 
          from "@fortawesome/free-solid-svg-icons";
 
@@ -21,6 +21,7 @@ function More() {
 
   return (
     <div className='more'>
+      <div className='background'></div>
       <header className='main'>
         <Header
         h1 = {''}
@@ -53,7 +54,7 @@ function More() {
 
         <section className="plus_friends">
           <header>
-            <h2>Plus Frienas</h2>
+            <h2>Plus Friends</h2>
             <span><FontAwesomeIcon icon={faCircleInfo}/> Learn More</span>
           </header>
           <ul className="plus_list">
@@ -71,9 +72,9 @@ function More() {
         <section className="more_app">
           <h2 className="blind">앱 더보기</h2>
           <ul>
-            <li><span className="app_icon"></span>kakao story</li>
-            <li><span className="app_icon"></span>Path</li>
-            <li><span className="app_icon"></span>kakao friends</li>
+            <li><span className="app_icon"><FontAwesomeIcon icon={faHeart}/></span>kakao story</li>
+            <li><span className="app_icon"><FontAwesomeIcon icon={faHeart}/></span>Path</li>
+            <li><span className="app_icon"><FontAwesomeIcon icon={faHeart}/></span>kakao friends</li>
           </ul>
         </section>
       </main>

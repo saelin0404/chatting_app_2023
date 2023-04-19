@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import 'style/Auth.scss';
 import {authService} from 'fbase';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
+import Header from './Header';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 function Auth() {
   const[email,setEmail] = useState();
@@ -41,23 +45,38 @@ function Auth() {
 
 
   return (
-    <main className='auth_main'>
-      <div>
-        <form onSubmit={onSubmit}>
+    <div className='auth'>
+    <div className='background'></div>
+    <header className='main'>
+      <Header />
+    </header>
+    <div className='log'>
+      <div className='logo'>
+        <span className='logo_left'>[</span>
+        <span className='logo_text'><span>Chatting...</span></span>
+        <span className='logo_right'>]</span>
+      </div>
+      <form onSubmit={onSubmit}>
+        <fieldset>
           <input type='email' placeholder='EMail' required name='email' 
             onChange={onChange} value={email}/>
           <input type='password' placeholder='PASSWORD' required name='password'
             onChange={onChange} value={password}/>
-          <input type='submit' value={newAccount ? '회원가입':'로그인'}/>
-        </form>
-        <span onClick={toggleAccount}>{newAccount? "로그인 하기" : '회원가입 하기'}</span>
-        <div>
-          <span>SNS로 로그인</span>
-          <button name='google'></button>
-          <button name='github'></button>
-        </div>
+          <input type='submit' value={newAccount ? 'Create Account':'Log In'}/>
+        </fieldset>
+      </form>
+      <span>
+        <span></span>
+        <span onClick={toggleAccount}>{newAccount? "Log In" : 'Create Account'}</span>
+        <span></span>
+      </span>
+      
+      <div className='sns'>
+        <button name='google'><FontAwesomeIcon icon={faGoogle}/></button>
+        <button name='github'><FontAwesomeIcon icon={faGithub}/></button>
       </div>
-    </main>
+    </div>
+  </div>
   )
 }
 

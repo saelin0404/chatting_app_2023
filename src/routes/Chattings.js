@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import 'style/Chatting.scss'
+import Header from 'component/Header';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Chatting from 'component/Chatting';
 import { db ,storage } from 'fbase';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadString ,getDownloadURL } from "firebase/storage";
 import { collection, addDoc, query, onSnapshot ,orderBy } from "firebase/firestore";
-import Header from 'component/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
@@ -91,6 +91,7 @@ function Chattings({user}) {
 
   return (
     <div className='chatting'>
+      <div className='background' style={{backgroundImage: `url(${userimg}`}}></div>
       <header className='main'>
         <Header
           h1 = {name}
@@ -101,13 +102,13 @@ function Chattings({user}) {
       </header>
       
       <main className='chatting'>
-        <span className="date_info">Thursday,March 23,2023</span>
+        <span className="chatting_info">Thursday,March 23,2023</span>
         <div className="chat_box my">
           <span className='chat'>{message[0]}</span>
           <span className="chat_time"><span>15</span>: <span>33</span></span>
         </div>
 
-        <div className="chat_box other">
+        <div className="chat_box friend">
           <div classNames="other_info">
           <Link to={'/friend'} state ={{email,images,userimg,message,name,profile_message}}>
             <span class="profile_img empty" style={{backgroundImage: `url(${userimg}`}}></span>
@@ -117,7 +118,6 @@ function Chattings({user}) {
           {messages}
           <span className="chat_time"><span>15</span>: <span>33</span></span>
         </div>
-
         <>
           {chats.map(chat =>(
           <Chatting key={chat.id} chatObj={chat} isOwner={chat.creatorID === user.uid} state ={{email,images,userimg,message,name,profile_message,id}}/>
@@ -132,7 +132,7 @@ function Chattings({user}) {
             <input type="text" id="chatting" className='text_box' onChange={onChat} value={chat}/>
             <label htmlFor='img' className='chat_img_up'>
                 <FontAwesomeIcon icon={faPlus}/>
-            </label>  
+            </label>
             <input type='file' accept='image/*' id='img' onChange={onFileChange} style={{display:'none'}}/>
             <label htmlFor='sub' className='submit'>
                 <FontAwesomeIcon icon={faPaperPlane}/>

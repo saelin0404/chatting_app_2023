@@ -11,6 +11,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 function Chats() {
   return (
     <div className='chats'>
+      <div className='background'></div>
       <header className='main'>
         <Header
         h1 = {'chats'}

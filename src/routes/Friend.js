@@ -3,7 +3,7 @@ import 'style/Profile.scss';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Header from 'component/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faComment, faGear, faGift, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faComment, faGift, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 function Friend(){
   const location = useLocation();
@@ -31,7 +31,7 @@ function Friend(){
       </header>
 
       <main className='main'>
-        <section className='background' style={{backgroundImage: `url(${images}`}}>
+        <section className='backgroundProfile' style={{backgroundImage: `url(${images}`}}>
           <h2 className='blind'>friend profile background image</h2>
         </section>
 

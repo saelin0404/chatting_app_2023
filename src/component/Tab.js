@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faComment, faMagnifyingGlass, faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faComment, faEllipsis, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function Tab(){
   const location = useLocation();
@@ -10,7 +10,7 @@ function Tab(){
   const tabs = [
     { icon: faUser, to: '/' },
     { icon: faComment, to: '/chats' },
-    { icon: faMagnifyingGlass, to: '/shopping' },
+    { icon: faHeart, to: '/story' },
     { icon: faEllipsis, to: '/more' },
   ];
 

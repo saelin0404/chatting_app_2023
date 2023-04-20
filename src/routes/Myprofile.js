@@ -9,7 +9,7 @@ import { updateProfile } from 'firebase/auth'
 import { db , storage } from 'fbase';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadString ,getDownloadURL } from "firebase/storage";
-import { collection, addDoc , onSnapshot ,query, orderBy , getDocs, deleteDoc} from "firebase/firestore";
+import { collection, addDoc , onSnapshot ,query, orderBy , getDocs, deleteDoc ,where} from "firebase/firestore";
 
 
 
@@ -28,7 +28,7 @@ function Myprofile({user}) {
   const [Message,setMessage] = useState('');
 
   useEffect(() => {
-    const q = query(collection(db, `profile`),
+    const q = query(collection(db, `profile`),where("creatorID","==",user.uid),
                   orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];
@@ -42,7 +42,7 @@ function Myprofile({user}) {
   },[]);
 
   useEffect(() => {
-    const q = query(collection(db, `message`),
+    const q = query(collection(db, `message`),where("creatorID","==",user.uid),
                   orderBy("createdAt", "desc"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const newArray = [];

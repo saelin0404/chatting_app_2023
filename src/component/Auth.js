@@ -46,7 +46,7 @@ function Auth() {
   //sns로 회원가입
   const onsocialClick = async (e) =>{
     console.log('e.target.name->',e.target.name);
-    const {target:{name}} = e; //e.target.name이거를 구조분해할당으로 쓴거
+    const {target:{name}} = e;
     let provider;
     if(name === 'google'){
       provider = new GoogleAuthProvider();

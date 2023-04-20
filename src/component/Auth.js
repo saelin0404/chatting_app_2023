@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import 'style/Auth.scss';
 import {authService} from 'fbase';
-import { createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword ,GithubAuthProvider,GoogleAuthProvider,signInWithPopup} from "firebase/auth";
 import Header from './Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -43,9 +43,23 @@ function Auth() {
   //로그인/회원가입 전환
   const toggleAccount = ()=>{setNewAccount(prev => !prev)}
 
+  //sns로 회원가입
+  const onsocialClick = async (e) =>{
+    console.log('e.target.name->',e.target.name);
+    const {target:{name}} = e; //e.target.name이거를 구조분해할당으로 쓴거
+    let provider;
+    if(name === 'google'){
+      provider = new GoogleAuthProvider();
+
+    }else if(name === 'github'){
+      provider = new GithubAuthProvider();
+    }
+    const data = signInWithPopup(authService, provider)
+    console.log(data);
+  }
 
   return (
-    <div className='auth'>
+  <div className='auth'>
     <div className='background'></div>
     <header className='main'>
       <Header />
@@ -71,11 +85,9 @@ function Auth() {
         <span onClick={toggleAccount}>{newAccount? "Log In" : 'Create Account'}</span>
         <span></span>
       </span>
-      
-      
       <div className='sns'>
-        <button name='google'><FontAwesomeIcon icon={faGoogle}/></button>
-        <button name='github'><FontAwesomeIcon icon={faGithub}/></button>
+        <button name='google' onClick={onsocialClick}><FontAwesomeIcon icon={faGoogle}/></button>
+        <button name='github' onClick={onsocialClick}><FontAwesomeIcon icon={faGithub}/></button>
       </div>
     </div>
   </div>

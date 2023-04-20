@@ -29,6 +29,9 @@ div.chatting{
       width:fit-content; 
       max-width: calc(100% - 100px); 
       position: relative;
+      &:last-child{
+        margin-bottom: 70px;
+      }
       .chat{
         color:rgba(4, 63, 130, 0.7);
         font-size: 14px; 
@@ -36,7 +39,7 @@ div.chatting{
         margin: 7px; 
         padding: 10px 15px; 
         border-radius: 5px; 
-        background: rgba(255, 255, 255, 0.7)
+        background: rgba(255, 255, 255, 0.7);        
       }
     }
     .my{
@@ -67,6 +70,9 @@ div.chatting{
     .friend{
       margin-left: 55px; 
       margin-top: 20px;
+      &>.chat{
+        max-width:450px;
+      }
       .profile_img{
         position: absolute;
         left: -55px; top: -5px; 
@@ -79,7 +85,7 @@ div.chatting{
       }
       .chat_time{
         position: absolute;
-        right: calc(0px - 30px);
+        right: calc(0px - 50px);
         bottom: 0px; 
         font-size: 14px;
       }

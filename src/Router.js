@@ -21,7 +21,7 @@ function AppRouter({isLogIn,user}){
           <Route path='/chats' element={<Chats/>}/>
           <Route path='/chattings' element={<Chattings user={user}/>}/>
           <Route path='/story' element={<Story user={user}/>}/>
-          <Route path='/more' element={<More />}/>
+          <Route path='/more' element={<More user={user}/>}/>
         </>
       ):(
         <Route path='/' element={<Auth />}/>

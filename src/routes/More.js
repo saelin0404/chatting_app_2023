@@ -12,7 +12,7 @@ import { faAngleLeft, faBuildingColumns, faCircleInfo, faGear, faGraduationCap, 
          from "@fortawesome/free-solid-svg-icons";
 
 
-function More() {
+function More({user}) {
   const navigate = useNavigate();
   const onLogOutClick = ()=>{
     authService.signOut();
@@ -34,10 +34,10 @@ function More() {
       <main className='main'>
         <section className='user_info'>
           <h2 className='blind'>User Information</h2>
-          <span className="profile_img empty"></span>
+          <span className="profile_img empty" style={user.photoURL ? {backgroundImage: `url(${user.photoURL})`} : {}}></span>
           <span className="profile_info">
-            <span className="profile_name">My Name</span>
-            <span className="profile_email">Userid@gmail.com</span>
+            <span className="profile_name">{user.displayName}</span>
+            <span className="profile_email">{user.email}</span>
           </span>
           <span className="log_out"><FontAwesomeIcon icon={faRightFromBracket} onClick={onLogOutClick}/></span>
         </section>

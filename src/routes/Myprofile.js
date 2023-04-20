@@ -231,7 +231,7 @@ function Myprofile({user}) {
             <h2 className='blind'>My Profoile info</h2>
             <div className='profile_img empty' style={attachment ? {backgroundImage: `url(${attachment})`} : {}}></div>
             <div className='profile_content'>
-                <span className='profile_name'>{user.displayName}</span>
+                <span className='profile_name'>{newDisplayName}</span>
                 <span className='profile_email'>{user.email}</span>
                 <span className='profile_message'>{Message}</span>
               </div>

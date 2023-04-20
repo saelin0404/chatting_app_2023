@@ -91,10 +91,16 @@
             transition: all 0.3s linear;
             &:hover{
               background: rgba(255, 255, 255, 0.3);
+              color: rgba(4, 63, 130, 0.7);
             }
           }
         }
       }
+    }
+    .error{
+      color: rgba(194, 3, 3, 0.8);
+      font-size: 13px;
+      margin: 0px;
     }
     &>span{
       opacity: 1;

@@ -65,11 +65,13 @@ function Auth() {
           <input type='submit' value={newAccount ? 'Create Account':'Log In'}/>
         </fieldset>
       </form>
+      {error && <span className='error'>{error}</span>}
       <span>
         <span></span>
         <span onClick={toggleAccount}>{newAccount? "Log In" : 'Create Account'}</span>
         <span></span>
       </span>
+      
       
       <div className='sns'>
         <button name='google'><FontAwesomeIcon icon={faGoogle}/></button>

@@ -193,8 +193,8 @@ function Myprofile({user}) {
             <h2 className='blind'>My Profoile info</h2>
             <div className='profile_img empty' style={attachment ? {backgroundImage: `url(${attachment})`} : {}}></div>
             <form className='profile_content' onSubmit={onProfileSubmit}>
-              <input type='text' className='profile_name' onChange={onChangeName} value={newDisplayName} required/>
-              <input type='text' className='profile_message' onChange={onChangeMessage} value={profileMessage}/>
+              <input type='text' className='profile_name' onChange={onChangeName} value={newDisplayName} required placeholder='name'/>
+              <input type='text' className='profile_message' onChange={onChangeMessage} value={profileMessage} placeholder='profile message'/>
 
               <label htmlFor='back_img' className='profile_img_up back'>
                 <FontAwesomeIcon icon={faCamera}/>
